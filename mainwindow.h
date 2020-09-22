@@ -16,13 +16,14 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_goButton_clicked();
 
-    void on_goButton_4_clicked();
+    void on_calculateButton_clicked();
 
-    void on_goButton_2_clicked();
+    void on_setUnsetButton_clicked();
 
-    void on_goButton_3_clicked();
+    void on_setZeroButton_clicked();
+
+    void on_swapButton_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -17,8 +17,8 @@
    <widget class="QLineEdit" name="numberLineEdit">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>30</y>
+      <x>60</x>
+      <y>40</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -66,8 +66,8 @@
    <widget class="QLineEdit" name="kLineEdit">
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>100</y>
+      <x>60</x>
+      <y>110</y>
       <width>211</width>
       <height>41</height>
      </rect>
@@ -86,12 +86,12 @@
      <string>Ответ</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="goButton">
+   <widget class="QPushButton" name="calculateButton">
     <property name="geometry">
      <rect>
       <x>450</x>
       <y>20</y>
-      <width>211</width>
+      <width>241</width>
       <height>34</height>
      </rect>
     </property>
@@ -99,12 +99,12 @@
      <string>Вычислить</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="goButton_2">
+   <widget class="QPushButton" name="setUnsetButton">
     <property name="geometry">
      <rect>
       <x>450</x>
       <y>60</y>
-      <width>211</width>
+      <width>241</width>
       <height>34</height>
      </rect>
     </property>
@@ -112,12 +112,12 @@
      <string>Установить. Снять</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="goButton_4">
+   <widget class="QPushButton" name="setZeroButton">
     <property name="geometry">
      <rect>
       <x>450</x>
       <y>140</y>
-      <width>122</width>
+      <width>241</width>
       <height>34</height>
      </rect>
     </property>
@@ -125,7 +125,7 @@
      <string>Обнулить</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="goButton_3">
+   <widget class="QPushButton" name="swapButton">
     <property name="geometry">
      <rect>
       <x>450</x>
