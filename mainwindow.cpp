@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "QDebug"
 #include "QInputDialog"
 #include "ui_mainwindow.h"
 
@@ -25,7 +26,14 @@ unsigned setUnsetKBit(unsigned n, unsigned k) {
 
 // вывести k-ый бит числа
 void MainWindow::on_calculateButton_clicked() {
-  unsigned n = ui->numberLineEdit->text().toInt();
+  bool ok;
+
+  unsigned n = ui->numberLineEdit->text().toInt(&ok, 2);
+  if (!ok) {
+    qDebug() << "cannot convert to uint";
+    return;
+  }
+
   unsigned k = ui->kLineEdit->text().toInt();
 
   unsigned ress = getKBit(n, k);
@@ -35,19 +43,32 @@ void MainWindow::on_calculateButton_clicked() {
 
 // вывести число с измененным k-м битом
 void MainWindow::on_setUnsetButton_clicked() {
-  unsigned n = ui->numberLineEdit->text().toInt();
+  bool ok;
+
+  unsigned n = ui->numberLineEdit->text().toInt(&ok, 2);
+  if (!ok) {
+    qDebug() << "cannot convert to uint";
+    return;
+  }
+
   unsigned k = ui->kLineEdit->text().toInt();
 
   unsigned ress = setUnsetKBit(n, k);
 
-  ui->responseLineEdit->setText(QString::number(ress));
+  ui->responseLineEdit->setText(QString::number(ress,2));
 }
 
 // Обнуление младших k бит числа
 void MainWindow::on_setZeroButton_clicked() {
-  unsigned n = ui->numberLineEdit->text().toInt();
-  unsigned k = ui->kLineEdit->text().toInt();
+  bool ok;
 
+  unsigned n = ui->numberLineEdit->text().toInt(&ok, 2);
+  if (!ok) {
+    qDebug() << "cannot convert to uint";
+    return;
+  }
+
+  unsigned k = ui->kLineEdit->text().toInt();
   unsigned res = (n >> k) << k;
 
   ui->responseLineEdit->setText(QString::number(res));
@@ -55,7 +76,13 @@ void MainWindow::on_setZeroButton_clicked() {
 
 // смена мест i-, j- ых битов в числе
 void MainWindow::on_swapButton_clicked() {
-  unsigned num = ui->numberLineEdit->text().toInt();
+  bool ok;
+
+  unsigned num = ui->numberLineEdit->text().toUInt(&ok, 2);
+  if (!ok) {
+    qDebug() << "cannot convert to uint";
+    return;
+  }
 
   unsigned i = QInputDialog::getInt(this, QString::fromUtf8("i бит"),
                                     QString::fromUtf8("Введите i бит"), 0.00,
@@ -74,5 +101,5 @@ void MainWindow::on_swapButton_clicked() {
     res = setUnsetKBit(ress, j);
   }
 
-  ui->responseLineEdit->setText(QString::number(res));
+  ui->responseLineEdit->setText(QString::number(res,2));
 }
