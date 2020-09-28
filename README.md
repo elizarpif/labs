@@ -3,4 +3,4 @@
 
 - Lab1
 
-![Lab1](https://github.com/elizarpif/labs/blob/master/lab1.png)
+![Lab1](https://github.com/elizarpif/labs/blob/master/screen.png)
