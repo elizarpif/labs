@@ -1,7 +1,8 @@
 #include "mainwindow.h"
+#include "ui_mainwindow.h"
+
 #include "QDebug"
 #include "QInputDialog"
-#include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -28,13 +29,13 @@ unsigned setUnsetKBit(unsigned n, unsigned k) {
 void MainWindow::on_calculateButton_clicked() {
   bool ok;
 
-  unsigned n = ui->numberLineEdit->text().toInt(&ok, 2);
+  unsigned n = ui->numberLineEdit->text().toUInt(&ok, 2);
   if (!ok) {
-    qDebug() << "cannot convert to uint";
+    qDebug() << "cannot convert to uint in 2 base";
     return;
   }
 
-  unsigned k = ui->kLineEdit->text().toInt();
+  unsigned k = ui->kLineEdit->text().toUInt();
 
   unsigned ress = getKBit(n, k);
 
@@ -45,13 +46,13 @@ void MainWindow::on_calculateButton_clicked() {
 void MainWindow::on_setUnsetButton_clicked() {
   bool ok;
 
-  unsigned n = ui->numberLineEdit->text().toInt(&ok, 2);
+  unsigned n = ui->numberLineEdit->text().toUInt(&ok, 2);
   if (!ok) {
-    qDebug() << "cannot convert to uint";
+    qDebug() << "cannot convert to uint in 2 base";
     return;
   }
 
-  unsigned k = ui->kLineEdit->text().toInt();
+  unsigned k = ui->kLineEdit->text().toUInt();
 
   unsigned ress = setUnsetKBit(n, k);
 
@@ -64,14 +65,14 @@ void MainWindow::on_setZeroButton_clicked() {
 
   unsigned n = ui->numberLineEdit->text().toUInt(&ok, 2);
   if (!ok) {
-    qDebug() << "cannot convert to uint";
+    qDebug() << "cannot convert to uint in 2 base";
     return;
   }
 
   unsigned k = ui->kLineEdit->text().toUInt();
   unsigned res = (n >> k) << k;
 
-  ui->responseLineEdit->setText(QString::number(res,2));
+  ui->responseLineEdit->setText(QString::number(res, 2));
 }
 
 // смена мест i-, j- ых битов в числе
@@ -80,7 +81,7 @@ void MainWindow::on_swapButton_clicked() {
 
   unsigned num = ui->numberLineEdit->text().toUInt(&ok, 2);
   if (!ok) {
-    qDebug() << "cannot convert to uint";
+    qDebug() << "cannot convert to uint in 2 base";
     return;
   }
 
